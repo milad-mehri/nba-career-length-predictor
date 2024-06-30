@@ -6,7 +6,7 @@ This project uses machine learning to predict the career lengths of NBA players 
 
 The model is trained with historical player performance data with statistics such as player age, games played, points per game, assists per game, rebounds per game, steals per game, turnovers, points per game trend, rebounds per game trend, assists per game trend, minutes per game trend, and average games missed.
 
-The model's accuracy is evaluated using the Mean Squared Error which was **~ 1.3799**. This means the models predictions are somewhat accurate.
+The model's accuracy is evaluated using the Mean Squared Error which was **~1.3799**. This means the models predictions are somewhat accurate.
 
 
 
