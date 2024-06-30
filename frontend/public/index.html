@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NBA Career Predictor</title>
+    <link rel="stylesheet" href="styles.css" />
   </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div class="container">
+      <div class="header">
+        <h1 class="title">NBA Career Length Predictor</h1>
+        <a href="https://github.com/milad-mehri" class="creator-link"
+          >Created by Milad Mehri</a
+        >
+      </div>
+      <p class="subtitle">mfaf</p>
+      <div class="search-sort-container">
+        <input
+          type="text"
+          id="search-bar"
+          class="search-bar"
+          placeholder="Search players..."
+        />
+        <select id="sort-options" class="sort-options">
+          <option value="ppg">Sort by PPG</option>
+          <option value="apg">Sort by APG</option>
+          <option value="rpg">Sort by RPG</option>
+          <option value="accuracy">Sort by Model Accuracy</option>
+          <option value="positive-dif">+DIF</option>
+          <option value="negative-dif">-DIF</option>
+        </select>
+      </div>
+      <div id="loading" class="loading-container">
+        <div class="spinner"></div>
+      </div>
+      <div id="player-container" class="player-container hidden">
+        <ul id="player-list" class="player-list"></ul>
+      </div>
+      <div class="pagination">
+        <button id="first-page" class="pagination-button hidden">Page 1</button>
+        <button id="prev-page" class="pagination-button">Previous</button>
+        <span id="page-number" class="page-number">1</span>
+        <button id="next-page" class="pagination-button">Next</button>
+      </div>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
