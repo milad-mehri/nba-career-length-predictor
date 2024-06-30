@@ -95,11 +95,13 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayPlayers(players, page) {
+    playerList.innerHTML = "";
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
     const paginatedPlayers = players.slice(start, end);
 
     paginatedPlayers.forEach((player) => {
+      const listItem = document.createElement("li");
       listItem.className = "player-item";
 
       const img = document.createElement("img");
