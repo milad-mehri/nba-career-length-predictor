@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
     let currentPlayers = [];
 
-    fetch('./frontend/data/players_combined.json')
+    fetch('./data/players_combined.json')
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
