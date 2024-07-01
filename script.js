@@ -5,7 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const playerContainer = document.getElementById("player-container");
   const loadingContainer = document.getElementById("loading");
   const firstPageButton = document.getElementById("first-page");
+  const statusFilter = document.getElementById("status-filter");
+
   const placeholderImage = "https://via.placeholder.com/50";
+
   const itemsPerPage = 50;
   let currentPage = 1;
   let currentPlayers = [];
@@ -20,6 +23,11 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((players) => {
       currentPlayers = players;
       sortAndDisplayPlayers();
+
+      statusFilter.addEventListener("change", () => {
+        currentPage = 1;
+        sortAndDisplayPlayers();
+      });
 
       searchBar.addEventListener("input", () => {
         const searchTerm = searchBar.value.toLowerCase();
@@ -64,34 +72,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function sortAndDisplayPlayers() {
     const sortValue = sortOptions.value;
+    const statusValue = statusFilter.value;
+
+    let filteredPlayers = currentPlayers;
+
+    if (statusValue === "active") {
+      filteredPlayers = filteredPlayers.filter((player) => player.is_active);
+    } else if (statusValue === "inactive") {
+      filteredPlayers = filteredPlayers.filter((player) => !player.is_active);
+    }
+
     if (sortValue === "ppg") {
-      currentPlayers.sort((a, b) => b.PPG - a.PPG);
+      filteredPlayers.sort((a, b) => b.PPG - a.PPG);
     } else if (sortValue === "apg") {
-      currentPlayers.sort((a, b) => b.APG - a.APG);
+      filteredPlayers.sort((a, b) => b.APG - a.APG);
     } else if (sortValue === "rpg") {
-      currentPlayers.sort((a, b) => b.RPG - a.RPG);
+      filteredPlayers.sort((a, b) => b.RPG - a.RPG);
     } else if (sortValue === "accuracy") {
-      currentPlayers.sort(
+      filteredPlayers.sort(
         (a, b) =>
           Math.abs(a.CAREER_LENGTH - a.Predicted_Career_Length) -
           Math.abs(b.CAREER_LENGTH - b.Predicted_Career_Length)
       );
     } else if (sortValue === "positive-dif") {
-      currentPlayers.sort(
+      filteredPlayers.sort(
         (a, b) =>
           b.Predicted_Career_Length -
           b.CAREER_LENGTH -
           (a.Predicted_Career_Length - a.CAREER_LENGTH)
       );
     } else if (sortValue === "negative-dif") {
-      currentPlayers.sort(
+      filteredPlayers.sort(
         (a, b) =>
           a.Predicted_Career_Length -
           a.CAREER_LENGTH -
           (b.Predicted_Career_Length - b.CAREER_LENGTH)
       );
     }
-    displayPlayers(currentPlayers, currentPage);
+    displayPlayers(filteredPlayers, currentPage);
   }
 
   function displayPlayers(players, page) {

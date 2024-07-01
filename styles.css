@@ -21,6 +21,12 @@ body {
   flex-direction: column;
 }
 
+.options-div {
+  display: flex;
+  flex: 2;
+  gap: 10px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -54,19 +60,20 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  gap: 10px;
 }
 
 .search-bar {
-  width: 70%;
+  flex: 3;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  margin-right: 10px;
+  margin-right: 0;
 }
 
-.sort-options {
-  width: 25%;
+.options {
+  flex: 1;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
@@ -236,7 +243,13 @@ body {
     margin-bottom: 10px;
   }
 
-  .sort-options {
+  .options-div {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+  }
+
+  .options {
     width: 100%;
   }
 
