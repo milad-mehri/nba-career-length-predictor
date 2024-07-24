@@ -113,10 +113,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function displayPlayers(players, page) {
+    const sortValue = sortOptions.value;
+    const statusValue = statusFilter.value;
+
+    let filteredPlayers = currentPlayers;
+
+    if (statusValue === "active") {
+      filteredPlayers = filteredPlayers.filter((player) => player.is_active);
+    } else if (statusValue === "inactive") {
+      filteredPlayers = filteredPlayers.filter((player) => !player.is_active);
+    }
+
     playerList.innerHTML = "";
     const start = (page - 1) * itemsPerPage;
     const end = start + itemsPerPage;
-    const paginatedPlayers = players.slice(start, end);
+    const paginatedPlayers = filteredPlayers.slice(start, end);
 
     paginatedPlayers.forEach((player) => {
       const listItem = document.createElement("li");
