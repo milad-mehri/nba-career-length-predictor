@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const sortValue = sortOptions.value;
     const statusValue = statusFilter.value;
 
-    let filteredPlayers = currentPlayers;
+    let filteredPlayers = players;
 
     if (statusValue === "active") {
       filteredPlayers = filteredPlayers.filter((player) => player.is_active);
